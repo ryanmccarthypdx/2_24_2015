@@ -37,17 +37,23 @@
     <div ng-controller="IceCreamCtrl" class="col-xs-6">
       <h2>Ice Cream</h2>
       <h4>Order Ice Cream</h4>
-      <form ng-submit="addIceCream()" class="form-inline">
+      <form ng-submit="addIceCream(iceCream)" class="form-inline">
         <div class="form-group">
           <label>Scoops:</label>
-          <select class="form-control" ng-model="iceCreamPrice">
-            <option value="2">One</option>
-            <option value="3">Two</option>
-            <option value="4">Three</option>
+          <select class="form-control" ng-model="iceCream" ng-options="item.scoops for item in iceCreamOptions">
           </select>
           <button class="btn" type="submit">Add</button>
         </div>
       </form>
+      <div ng-show="iceCreams.length">
+        <h4>Ice creams on order:</h4>
+        <ul>
+          <li ng-repeat="item in iceCreams">
+            {{item.scoops}} scoop cone, ${{item.price}}
+          </li>
+        </ul>
+        <h4>Check total: ${{ChecksFactory.total(iceCreams)}}</h4>
+      </div>
     </div>
   </div>
 </body>
