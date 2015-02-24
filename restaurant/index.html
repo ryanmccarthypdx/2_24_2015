@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" ng-app="restaurant">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="controllers/PizzaController.js"></script>
+  <script src="controllers/IceCreamController.js"></script>
+  <script src="services/ChecksFactory.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div ng-controller="PizzaCtrl" class="col-xs-6">
+      <h2>Pizza</h2>
+      <h4>Order Pizza</h4>
+      <form ng-submit="addPizza()" class="form-inline">
+        <div class="form-group">
+          <label>Size:</label>
+          <select class="form-control" ng-model="pizzaPrice">
+            <option value="8">Small</option>
+            <option value="10">Medium</option>
+            <option value="14">Large</option>
+          </select>
+          <button class="btn" type="submit">Add</button>
+        </div>
+      </form>
+    </div>
+    <div ng-controller="IceCreamCtrl" class="col-xs-6">
+      <h2>Ice Cream</h2>
+      <h4>Order Ice Cream</h4>
+      <form ng-submit="addIceCream()" class="form-inline">
+        <div class="form-group">
+          <label>Scoops:</label>
+          <select class="form-control" ng-model="iceCreamPrice">
+            <option value="2">One</option>
+            <option value="3">Two</option>
+            <option value="4">Three</option>
+          </select>
+          <button class="btn" type="submit">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
