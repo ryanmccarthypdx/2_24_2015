@@ -16,17 +16,23 @@
     <div ng-controller="PizzaCtrl" class="col-xs-6">
       <h2>Pizza</h2>
       <h4>Order Pizza</h4>
-      <form ng-submit="addPizza()" class="form-inline">
+      <form ng-submit="addPizza(pizza)" class="form-inline">
         <div class="form-group">
           <label>Size:</label>
-          <select class="form-control" ng-model="pizzaPrice">
-            <option value="8">Small</option>
-            <option value="10">Medium</option>
-            <option value="14">Large</option>
+          <select class="form-control" ng-model="pizza" ng-options="item.size for item in pizzaOptions">
           </select>
           <button class="btn" type="submit">Add</button>
         </div>
       </form>
+      <div ng-show="pizzas.length">
+        <h4>Pizzas on order:</h4>
+        <ul>
+          <li ng-repeat="item in pizzas">
+            {{item.size}} pizza, ${{item.price}}
+          </li>
+        </ul>
+        <h4>Check total: ${{ChecksFactory.total(pizzas)}}</h4>
+      </div>
     </div>
     <div ng-controller="IceCreamCtrl" class="col-xs-6">
       <h2>Ice Cream</h2>
